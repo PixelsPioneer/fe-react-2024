@@ -16,9 +16,12 @@ function App() {
     const [searchQuery, setSearchQuery] = useState('');
     const [filteredName, setFilteredName] = useState('');
     const [sortOption, setSortOption] = useState('');
+
+    const getPreferredTheme = () => !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+
     const [isDarkTheme, setIsDarkTheme] = useState<boolean>(() => {
         const storedTheme = localStorage.getItem('theme');
-        return storedTheme ? JSON.parse(storedTheme) : false;
+        return storedTheme === null ? getPreferredTheme() : JSON.parse(storedTheme);
     });
 
     const products = mockData;
@@ -86,7 +89,7 @@ function App() {
                     setSearchQuery={setSearchQuery}
                     setFilteredName={setFilteredName}
                     setSortOption={setSortOption}
-                    isDarkTheme={isDarkTheme} // Додавання isDarkTheme до props
+                    isDarkTheme={isDarkTheme}
                 />
             )}
             <Footer />

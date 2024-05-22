@@ -7,9 +7,9 @@ const NameBarComponent: React.FC = () => {
 
     const handleButtonClick = (name: string) => {
         if (activeButton === name) {
-            setActiveButton(''); // Deactivate if the same button is clicked
+            setActiveButton('');
         } else {
-            setActiveButton(name); // Activate the clicked button
+            setActiveButton(name);
         }
     };
 
