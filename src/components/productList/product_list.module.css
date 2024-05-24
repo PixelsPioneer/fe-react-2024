@@ -1,29 +1,28 @@
 .barContainer {
   padding: 20px;
-  width: 90%;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   gap: 20px;
+  justify-content: space-between;
 }
 
-.triageBarWrapper,
-.nameBarWrapper {
-  min-width: 330px;
+.searchContainer {
   display: flex;
+  justify-content: flex-start;
+  margin-left: 53px;
   flex: 1;
-  align-items: center;
 }
 
-.searchBar {
-  width: 100%;
+.nameContainer {
   display: flex;
+  margin-right: auto;
 }
 
-.searchBar input {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
+.triageContainer {
+  display: flex;
+  margin-left: auto;
+  margin-right: 52px;
 }
 
 .mainCard {
@@ -122,24 +121,28 @@
   .barContainer {
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     width: 100%;
+    gap: 20px;
   }
 
-  .searchBarWrapper,
-  .nameBarWrapper,
-  .triageBarWrapper {
+  .searchContainer,
+  .nameContainer,
+  .triageContainer {
     width: 100%;
-    margin-bottom: 20px;
+    margin: 0;
   }
 
-  .searchBar {
-    width: 100%;
+  .searchContainer {
+    justify-content: center;
   }
 
-  .searchBar input {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
+  .nameContainer {
+    justify-content: center;
+  }
+
+  .triageContainer {
+    justify-content: center;
+    margin-right: 75px;
   }
 }

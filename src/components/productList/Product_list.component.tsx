@@ -63,9 +63,15 @@ export const ProductListComponent: React.FC<ProductListComponentProps> = ({
     return (
         <div className={styles.mainCard}>
             <div className={styles.barContainer}>
-                <SearchBar />
-                <NameBar />
-                <TriageBar options={options} />
+                <div className={styles.searchContainer}>
+                    <SearchBar />
+                </div>
+                <div className={styles.nameContainer}>
+                    <NameBar />
+                </div>
+                <div className={styles.triageContainer}>
+                    <TriageBar options={options} />
+                </div>
             </div>
             <ul className={styles.cardContainer}>
                 {filteredProducts.map((product) => (
