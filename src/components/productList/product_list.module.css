@@ -48,7 +48,7 @@
   max-width: 275px;
   width: 100%;
   flex-direction: column;
-  border: 1px solid #CCC;
+  border: 1px solid var(--card-color);
   border-radius: 20px;
   padding: 20px 15px;
   gap: 20px;
@@ -63,7 +63,7 @@
 }
 
 .productTitle {
-  color: #111;
+  color: var(--text-color);
   display: flex;
   margin: 0;
   max-width: 245px;
@@ -77,8 +77,8 @@
   position: absolute;
   top: -10px;
   right: -10px;
-  background-color: #EF4934;
-  color: #111;
+  background-color: var(--button-select-color);
+  color: var(--item-cart-color);
   border-radius: 50%;
   width: 20px;
   height: 20px;
@@ -89,7 +89,7 @@
 }
 
 .priceContainer {
-  color: #111;
+  color: var(--text-color);
   display: flex;
   justify-content: space-between;
   align-items: center;

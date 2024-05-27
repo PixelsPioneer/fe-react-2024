@@ -1,38 +1,34 @@
 import React, { useState } from 'react';
 
+import '../../App.css';
 import styles from './nameBar.module.css';
 
-const NameBarComponent: React.FC = () => {
-    const [activeButton, setActiveButton] = useState<string>('');
+type ButtonName = 'Electronics' | 'Shoes' | 'Clothes';
 
-    const handleButtonClick = (name: string) => {
-        if (activeButton === name) {
-            setActiveButton('');
-        } else {
-            setActiveButton(name);
-        }
+const buttons: { name: ButtonName; label: string }[] = [
+    { name: 'Electronics', label: 'Electronics' },
+    { name: 'Shoes', label: 'Shoes' },
+    { name: 'Clothes', label: 'Clothes' },
+];
+
+const NameBarComponent: React.FC = () => {
+    const [activeButton, setActiveButton] = useState<ButtonName | ''>('');
+
+    const handleButtonClick = (name: ButtonName) => {
+        setActiveButton((previousActiveButton) => (previousActiveButton === name ? '' : name));
     };
 
     return (
         <div className={styles.buttonGroup}>
-            <button
-                className={`${styles.nameButton} ${activeButton === 'Electronics' ? styles.active : ''}`}
-                onClick={() => handleButtonClick('Electronics')}
-            >
-                Electronics
-            </button>
-            <button
-                className={`${styles.nameButton} ${activeButton === 'Shoes' ? styles.active : ''}`}
-                onClick={() => handleButtonClick('Shoes')}
-            >
-                Shoes
-            </button>
-            <button
-                className={`${styles.nameButton} ${activeButton === 'Clothes' ? styles.active : ''}`}
-                onClick={() => handleButtonClick('Clothes')}
-            >
-                Clothes
-            </button>
+            {buttons.map((button) => (
+                <button
+                    key={button.name}
+                    className={`${styles.nameButton} ${activeButton === button.name ? styles.active : ''}`}
+                    onClick={() => handleButtonClick(button.name)}
+                >
+                    {button.label}
+                </button>
+            ))}
         </div>
     );
 };

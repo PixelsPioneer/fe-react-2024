@@ -23,7 +23,7 @@
 }
 
 .aboutMeHeader {
-  color: #111;
+  color: var(--text-color);
   margin: 0;
   font-weight: 600;
   font-size: 27px;
@@ -31,13 +31,13 @@
 }
 
 .aboutMeDescription {
-  color: #111;
+  color: var(--text-color);
   font-weight: 400;
   line-height: 20px;
 }
 
 .aboutMeDescription a {
-  color: #111;
+  color: var(--text-color);
 }
 
 
@@ -57,7 +57,7 @@
   }
 
   .aboutMeText {
-    color: #111;
+    color: var(--text-color);
     margin: 0;
     font-weight: 700;
     font-size: 36px;
@@ -65,7 +65,7 @@
   }
 
   .aboutMeDescription {
-    color: #111;
+    color: var(--text-color);
     width: 100%;
     font-weight: 400;
     font-size: 22px;

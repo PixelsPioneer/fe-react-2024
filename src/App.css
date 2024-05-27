@@ -8,3 +8,39 @@ body {
   min-width: 390px;
 }
 
+.App.dark {
+  --background-color: #111;
+  --text-color: #FFF;
+  --button-background-color: #333;
+  --button-text-color: #FFF;
+  --button-select-color: #EF4934;
+  --card-color: #585858;
+  --item-cart-color: #111;
+  --search-background-color: #333;
+  --name-button-background-color: #111;
+  --name-button-selected-text-color: #111;
+  --name-button-border-color: #333;
+  --triage-default-background-color: #111;
+  --triage-option-background-color: #333;
+  --arrow-diabel-color: #FFF;
+  --arrow-anabel-color: #FFF;
+}
+
+.App.light {
+  --background-color: #FFF;
+  --text-color: #000;
+  --button-background-color: #111;
+  --button-text-color: #FFF;
+  --button-select-color: #EF4934;
+  --card-color: #CCC;
+  --item-cart-color: #111;
+  --search-background-color: #FFF;
+  --name-button-background-color: #FFF;
+  --name-button-selected-text-color: #FFF;
+  --name-button-border-color: #E1E1E1;
+  --triage-default-background-color: #FFF;
+  --triage-option-background-color: #FFF;
+  --arrow-diabel-color: #111;
+  --arrow-anabel-color: #FFF;
+}
+

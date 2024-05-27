@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import searchIcon from '@/assets/search.svg';
 
+import '../../App.css';
 import styles from './searchBar.module.css';
 
 const SearchBarComponent: React.FC = () => {

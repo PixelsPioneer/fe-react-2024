@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import '../../App.css';
 import styles from './triageBar.module.css';
 
 interface TriageBarProps {
@@ -33,13 +34,7 @@ const TriageBarComponent: React.FC<TriageBarProps> = ({ options }) => {
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
                     >
-                        <path
-                            d="M7 10l5 5 5-5"
-                            stroke={isOpen ? 'white' : 'black'}
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                        />
+                        <path d="M7 10l5 5 5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                 </div>
                 {isOpen && (

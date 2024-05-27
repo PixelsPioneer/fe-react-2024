@@ -2,13 +2,12 @@ import React, { useEffect, useState } from 'react';
 
 import { AboutMeComponents } from '@/components/about/About_me.component.tsx';
 import Footer from '@/components/footer/Footer.component.tsx';
-import { ProductListComponent } from '@/components/productList/Product_list.component.tsx';
+import ProductListComponent from '@/components/productList/Product_list.component.tsx';
 import { mockData } from '@/mock_data.ts';
 
 import { HeaderComponent } from './components/header/Header.component.tsx';
 
 import './App.css';
-import './index.css';
 
 function App() {
     const [currentComponent, setCurrentComponent] = useState('About');
@@ -39,12 +38,10 @@ function App() {
         });
     };
 
-    const toggleTheme = () => {
-        setIsDarkTheme((previousTheme: boolean) => {
-            const isDark: boolean = !previousTheme;
-            localStorage.setItem('theme', JSON.stringify(isDark));
-            return isDark;
-        });
+    const setTheme = (theme: string) => {
+        const isDark = theme === 'dark';
+        setIsDarkTheme(isDark);
+        localStorage.setItem('theme', JSON.stringify(isDark));
     };
 
     useEffect(() => {
@@ -61,19 +58,19 @@ function App() {
     useEffect(() => {
         const rootElement = document.documentElement;
         if (isDarkTheme) {
-            rootElement.classList.add('dark-theme');
+            rootElement.classList.add('dark');
         } else {
-            rootElement.classList.remove('dark-theme');
+            rootElement.classList.remove('dark');
         }
     }, [isDarkTheme]);
 
     return (
-        <>
+        <div className={`App ${isDarkTheme ? 'dark' : 'light'}`}>
             <HeaderComponent
                 toggleComponent={toggleComponent}
                 products={products}
                 selectedProducts={selectedProducts}
-                onThemeToggle={toggleTheme}
+                setTheme={setTheme}
                 isDarkTheme={isDarkTheme}
             />
             {currentComponent === 'About' ? (
@@ -93,7 +90,7 @@ function App() {
                 />
             )}
             <Footer />
-        </>
+        </div>
     );
 }
 

@@ -18,17 +18,11 @@ interface HeaderComponentProps {
     toggleComponent: (componentName: string) => void;
     products: Product[];
     selectedProducts: number[];
-    onThemeToggle: () => void;
+    setTheme: (theme: 'light' | 'dark') => void;
     isDarkTheme: boolean;
 }
 
-export const HeaderComponent: React.FC<HeaderComponentProps> = ({
-    toggleComponent,
-    products,
-    selectedProducts,
-    onThemeToggle,
-    isDarkTheme,
-}) => {
+export const HeaderComponent: React.FC<HeaderComponentProps> = ({ toggleComponent, products, selectedProducts, setTheme, isDarkTheme }) => {
     const [totalItemsInCart, setTotalItemsInCart] = useState(0);
 
     useEffect(() => {
@@ -40,25 +34,11 @@ export const HeaderComponent: React.FC<HeaderComponentProps> = ({
             <div className={styles.themesContainer}>
                 <img className={styles.logoMOCG} src={LogoMOCG} alt="Logo MA" />
                 <div className={styles.themesMenuContainer}>
-                    <button
-                        className={`${styles.lightThemeButton} ${isDarkTheme ? '' : styles.active}`}
-                        onClick={() => {
-                            if (isDarkTheme) {
-                                onThemeToggle();
-                            }
-                        }}
-                    >
+                    <button className={`${styles.lightThemeButton} ${isDarkTheme ? '' : styles.active}`} onClick={() => setTheme('light')}>
                         <img className={styles.lightThemeIcon} src={LightTheme} alt="Light Theme" />
                     </button>
                     <hr className={styles.customHr} />
-                    <button
-                        className={`${styles.darkThemesButton} ${isDarkTheme ? styles.active : ''}`}
-                        onClick={() => {
-                            if (!isDarkTheme) {
-                                onThemeToggle();
-                            }
-                        }}
-                    >
+                    <button className={`${styles.darkThemesButton} ${isDarkTheme ? styles.active : ''}`} onClick={() => setTheme('dark')}>
                         <img className={styles.darkThemeIcon} src={DarkTheme} alt="Dark Theme" />
                     </button>
                 </div>

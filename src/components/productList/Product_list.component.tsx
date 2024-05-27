@@ -8,6 +8,7 @@ import type { ProductsInterface } from '@/interfaces/interface_product';
 import addToCardImage from '../../assets/add_to_card.svg';
 import addToCardDarkThemes from '../../assets/card.svg';
 
+import '../../App.css';
 import styles from './product_list.module.css';
 
 interface ProductListComponentProps {
@@ -37,28 +38,25 @@ export const ProductListComponent: React.FC<ProductListComponentProps> = ({
 }) => {
     const options = ['Price (Low - High)', 'Price (High - Low)', 'Newest', 'Oldest'];
 
-    const filteredProducts = products
-        .filter((product) => product.title.toLowerCase().includes(searchQuery.toLowerCase()))
-        .filter((product) => product.title.toLowerCase().includes(filteredName.toLowerCase()))
-        .sort((a, b) => {
-            switch (sortOption) {
-                case 'Price (High - Low)': {
-                    return b.price - a.price;
-                }
-                case 'Price (Low - High)': {
-                    return a.price - b.price;
-                }
-                case 'Newest': {
-                    return new Date(b.creationAt).getTime() - new Date(a.creationAt).getTime();
-                }
-                case 'Oldest': {
-                    return new Date(a.creationAt).getTime() - new Date(b.creationAt).getTime();
-                }
-                default: {
-                    return 0;
-                }
+    const sortedProducts = products.sort((a, b) => {
+        switch (sortOption) {
+            case 'Price (High - Low)': {
+                return b.price - a.price;
             }
-        });
+            case 'Price (Low - High)': {
+                return a.price - b.price;
+            }
+            case 'Newest': {
+                return new Date(b.creationAt).getTime() - new Date(a.creationAt).getTime();
+            }
+            case 'Oldest': {
+                return new Date(a.creationAt).getTime() - new Date(b.creationAt).getTime();
+            }
+            default: {
+                return 0;
+            }
+        }
+    });
 
     return (
         <div className={styles.mainCard}>
@@ -74,7 +72,7 @@ export const ProductListComponent: React.FC<ProductListComponentProps> = ({
                 </div>
             </div>
             <ul className={styles.cardContainer}>
-                {filteredProducts.map((product) => (
+                {sortedProducts.map((product) => (
                     <li className={styles.card} key={product.id}>
                         <img className={styles.productImages} src={product.images[0]} alt="product" />
                         <p className={styles.productTitle}>{product.title}</p>
@@ -95,3 +93,5 @@ export const ProductListComponent: React.FC<ProductListComponentProps> = ({
         </div>
     );
 };
+
+export default ProductListComponent;
