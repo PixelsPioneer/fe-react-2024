@@ -2,45 +2,61 @@
 
 body {
   display: flex;
+  background-color: var(--background-color);
   flex-direction: column;
   align-content: center;
   font-family: "Montserrat", sans-serif;
   min-width: 390px;
 }
 
-.App.dark {
-  --background-color: #111;
-  --text-color: #FFF;
-  --button-background-color: #333;
-  --button-text-color: #FFF;
-  --button-select-color: #EF4934;
-  --card-color: #585858;
-  --item-cart-color: #111;
-  --search-background-color: #333;
-  --name-button-background-color: #111;
-  --name-button-selected-text-color: #FFF;
-  --name-button-border-color: #333;
-  --triage-default-background-color: #111;
-  --triage-option-background-color: #333;
-  --arrow-diabel-color: #FFF;
-  --arrow-anabel-color: #FFF;
+.App {
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
-.App.light {
-  --background-color: #FFF;
-  --text-color: #000;
-  --button-background-color: #111;
-  --button-text-color: #FFF;
-  --button-select-color: #EF4934;
-  --card-color: #CCC;
-  --item-cart-color: #111;
-  --search-background-color: #FFF;
-  --name-button-background-color: #FFF;
-  --name-button-selected-text-color: #FFF;
-  --name-button-border-color: #E1E1E1;
-  --triage-default-background-color: #FFF;
-  --triage-option-background-color: #FFF;
-  --arrow-diabel-color: #111;
-  --arrow-anabel-color: #FFF;
+:root {
+  --light: #FFF;
+  --dark: #111;
+  --main-red: #EF4934;
+  --grey1: #CCC;
+  --grey2: #E1E1E1;
+  --grey3: #333;
+  --grey4: #585858;
+}
+
+.dark {
+  --background-color: var(--dark);
+  --text-color: var(--light);
+  --button-background-color: var(--grey3);
+  --button-text-color: var(--light);
+  --button-select-color: var(--main-red);
+  --card-color: var(--grey4);
+  --item-cart-color: var(--dark);
+  --search-background-color: var(--grey3);
+  --name-button-background-color: var(--dark);
+  --name-button-selected-text-color: var(--light);
+  --name-button-border-color: var(--grey3);
+  --triage-default-background-color: var(--dark);
+  --triage-option-background-color: var(--grey3);
+  --arrow-diabel-color: var(--light);
+  --arrow-anabel-color: var(--light);
+}
+
+.light {
+  --background-color: var(--light);
+  --text-color: var(--dark);
+  --button-background-color: var(--dark);
+  --button-text-color: var(--light);
+  --button-select-color: var(--main-red);
+  --card-color: var(--grey1);
+  --item-cart-color: var(--dark);
+  --search-background-color: var(--light);
+  --name-button-background-color: var(--light);
+  --name-button-selected-text-color: var(--light);
+  --name-button-border-color: var(--grey2);
+  --triage-default-background-color: var(--light);
+  --triage-option-background-color: var(--light);
+  --arrow-diabel-color: var(--dark);
+  --arrow-anabel-color: var(--light);
 }
 

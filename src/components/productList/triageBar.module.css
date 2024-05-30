@@ -82,6 +82,14 @@
   box-sizing: border-box;
 }
 
+@media only screen and (min-width: 648px) and (max-width: 1249px) {
+
+  .triageBarContainer {
+    justify-content: flex-start;
+    margin-right: 200px;
+  }
+}
+
 @media (max-width: 1249px) {
 
   .triageBarContainer {

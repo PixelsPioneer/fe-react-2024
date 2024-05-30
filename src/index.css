@@ -1,5 +1,6 @@
 body {
   min-width: 390px;
+  background-color: var(--background-color);
   justify-content: space-between;
   font-family: "Montserrat", sans-serif;
 }
@@ -59,27 +60,5 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
-
-
-.dark-theme {
-  background-color: #111;
-}
-
-.dark-theme p {
-  color: #FFF;
-}
-
-.dark-theme a {
-  text-decoration-line: underline;
-  color: #FFF;
-}
-
-.dark-theme h1 {
-  color: #FFF;
-}
-
-.dark-theme a:hover {
-  color: #747BFF;
 }
 

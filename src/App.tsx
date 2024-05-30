@@ -5,7 +5,7 @@ import Footer from '@/components/footer/Footer.component.tsx';
 import ProductListComponent from '@/components/productList/Product_list.component.tsx';
 import { mockData } from '@/mock_data.ts';
 
-import { HeaderComponent } from './components/header/Header.component.tsx';
+import HeaderComponent from './components/header/Header.component.tsx';
 
 import './App.css';
 
@@ -52,20 +52,18 @@ function App() {
     }, []);
 
     useEffect(() => {
-        document.body.style.backgroundColor = isDarkTheme ? '#111' : '#FFF';
-    }, [isDarkTheme]);
-
-    useEffect(() => {
         const rootElement = document.documentElement;
         if (isDarkTheme) {
             rootElement.classList.add('dark');
+            rootElement.classList.remove('light');
         } else {
+            rootElement.classList.add('light');
             rootElement.classList.remove('dark');
         }
     }, [isDarkTheme]);
 
     return (
-        <div className={`App ${isDarkTheme ? 'dark' : 'light'}`}>
+        <div className="App">
             <HeaderComponent
                 toggleComponent={toggleComponent}
                 products={products}

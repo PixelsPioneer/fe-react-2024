@@ -116,6 +116,157 @@
   margin: 0;
 }
 
+@media only screen and (min-width: 658px) and (max-width: 988px) {
+
+  .barContainer {
+    padding: 20px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .searchContainer,
+  .nameContainer,
+  .triageContainer {
+    margin: 0;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .mainCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    padding-top: 20px;
+  }
+
+  .cardContainer {
+    display: flex;
+    max-width: 1175px;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 35px;
+    padding: 0;
+  }
+
+  .card {
+    display: flex;
+    max-width: 275px;
+    width: 100%;
+    flex-direction: column;
+    border: 1px solid var(--card-color);
+    border-radius: 20px;
+    padding: 20px 15px;
+    gap: 20px;
+  }
+
+  .productTitle {
+    color: var(--text-color);
+    display: flex;
+    margin: 0;
+    max-width: 245px;
+    word-break: break-word;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 25px;
+  }
+
+  .priceContainer {
+    color: var(--text-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .productPrice {
+    display: flex;
+    margin: 0;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 30px;
+  }
+}
+
+@media only screen and (min-width: 658px) and (max-width: 1249px) {
+
+  .barContainer {
+    padding: 20px;
+  }
+
+  .searchContainer,
+  .nameContainer,
+  .triageContainer {
+    margin: 0;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .searchContainer {
+    margin-left: 0;
+  }
+
+  .triageContainer {
+    margin-right: 0;
+  }
+
+  .mainCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    padding-top: 20px;
+  }
+
+  .cardContainer {
+    display: flex;
+    max-width: 1175px;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 35px;
+    padding: 0;
+  }
+
+  .card {
+    display: flex;
+    max-width: 275px;
+    width: 100%;
+    flex-direction: column;
+    border: 1px solid var(--card-color);
+    border-radius: 20px;
+    padding: 20px 15px;
+    gap: 20px;
+  }
+
+  .productTitle {
+    color: var(--text-color);
+    display: flex;
+    margin: 0;
+    max-width: 245px;
+    word-break: break-word;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 25px;
+  }
+
+  .priceContainer {
+    color: var(--text-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .productPrice {
+    display: flex;
+    margin: 0;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 30px;
+  }
+}
+
+
 @media only screen and (max-width: 1249px) {
 
   .barContainer {

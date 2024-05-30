@@ -13,6 +13,10 @@
   font-weight: 600;
   color: var(--text-color);
   cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .nameButton:hover {
@@ -25,12 +29,26 @@
   color: var(--name-button-selected-text-color);
 }
 
-@media (min-width: 1250px) {
+@media only screen and (min-width: 648px) and (max-width: 1249px) {
 
   .buttonGroup {
-    padding: 10px 20px;
-    height: 40px;
     display: flex;
-    gap: 20px;
+    gap: 65px;
+    height: 40px;
+  }
+
+  .nameButton {
+    background-color: var(--name-button-background-color);
+    border: 1px solid var(--name-button-border-color);
+    border-radius: 50px;
+    padding: 20px 40px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-color);
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    text-align: center;
   }
 }
+
