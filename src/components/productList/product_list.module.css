@@ -26,6 +26,10 @@
   gap: 20px;
 }
 
+.triageContainer {
+  margin-right: 55px;
+}
+
 
 .mainCard {
   display: flex;
