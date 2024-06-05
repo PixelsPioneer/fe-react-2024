@@ -2,33 +2,36 @@
   padding: 20px;
   width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 20px;
-  justify-content: space-between;
 }
 
-.searchContainer {
+.rightContainer {
   display: flex;
-  justify-content: flex-start;
-  margin-left: 53px;
-  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: auto;
 }
 
-.nameContainer {
-  display: flex;
-  margin-right: auto;
-}
 
+.searchContainer,
+.nameContainer,
 .triageContainer {
   display: flex;
-  margin-left: auto;
-  margin-right: 52px;
+  width: 100%;
+  justify-content: center;
+  gap: 20px;
 }
+
 
 .mainCard {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   padding: 10px;
   padding-top: 20px;
 }
@@ -116,7 +119,7 @@
   margin: 0;
 }
 
-@media only screen and (min-width: 658px) and (max-width: 988px) {
+@media only screen and (min-width: 658px) and (max-width: 989px) {
 
   .barContainer {
     padding: 20px;
@@ -188,112 +191,81 @@
   }
 }
 
-@media only screen and (min-width: 658px) and (max-width: 1249px) {
+@media only screen and (min-width: 990px) and (max-width: 1249px) {
 
   .barContainer {
     padding: 20px;
-  }
-
-  .searchContainer,
-  .nameContainer,
-  .triageContainer {
-    margin: 0;
-    width: 100%;
-    justify-content: center;
-  }
-
-  .searchContainer {
-    margin-left: 0;
-  }
-
-  .triageContainer {
-    margin-right: 0;
-  }
-
-  .mainCard {
-    display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    padding: 10px;
-    padding-top: 20px;
-  }
-
-  .cardContainer {
-    display: flex;
-    max-width: 1175px;
-    width: 100%;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 35px;
-    padding: 0;
-  }
-
-  .card {
-    display: flex;
-    max-width: 275px;
-    width: 100%;
-    flex-direction: column;
-    border: 1px solid var(--card-color);
-    border-radius: 20px;
-    padding: 20px 15px;
+    justify-content: space-between;
     gap: 20px;
   }
 
-  .productTitle {
-    color: var(--text-color);
+  .rightContainer {
     display: flex;
-    margin: 0;
-    max-width: 245px;
-    word-break: break-word;
-    font-weight: 600;
-    font-size: 22px;
-    line-height: 25px;
-  }
-
-  .priceContainer {
-    color: var(--text-color);
-    display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    justify-content: flex-end;
     align-items: center;
+    gap: 20px;
+    width: auto;
   }
 
-  .productPrice {
+  .searchContainer {
+    justify-content: flex-start;
+  }
+
+  .rightContainer {
     display: flex;
-    margin: 0;
-    font-weight: 600;
-    font-size: 24px;
-    line-height: 30px;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+    width: auto;
+  }
+
+  .nameContainer,
+  .triageContainer {
+    justify-content: flex-end;
+  }
+
+  .triageContainer {
+    white-space: nowrap;
   }
 }
 
-
-@media only screen and (max-width: 1249px) {
+@media only screen and (min-width: 1250px) {
 
   .barContainer {
-    flex-direction: column;
+    padding: 20px;
+    flex-direction: row;
     align-items: center;
-    justify-content: center;
-    width: 100%;
+    justify-content: space-between;
     gap: 20px;
   }
 
-  .searchContainer,
-  .nameContainer,
-  .triageContainer {
-    width: 100%;
-    margin: 0;
+  .searchContainer {
+    justify-content: flex-start;
+    margin-left: 20px;
   }
 
-  .searchContainer {
-    justify-content: center;
+  .rightContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+    width: auto;
   }
 
   .nameContainer {
-    justify-content: center;
+    margin-right: 20px;
   }
 
   .triageContainer {
-    justify-content: center;
-    margin-right: 75px;
+    justify-content: flex-end;
+  }
+
+  .triageContainer {
+    white-space: nowrap;
+    margin-right: 50px;
   }
 }

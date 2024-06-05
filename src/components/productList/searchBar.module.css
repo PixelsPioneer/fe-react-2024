@@ -35,7 +35,7 @@
     height: 20px;
   }
 
-  @media only screen and (min-width: 648px) and (max-width: 1249px) {
+  @media only screen and (min-width: 648px) and (max-width: 989px) {
 
     .searchBarContainer {
       position: relative;
@@ -55,6 +55,17 @@
     }
   }
 
+
+  @media only screen and (min-width: 990px) and (max-width: 1249px) {
+
+    .searchBarContainer {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: 40px;
+    }
+  }
 
   @media (max-width: 1250px) {
 

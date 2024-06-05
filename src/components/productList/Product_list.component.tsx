@@ -64,11 +64,13 @@ export const ProductListComponent: React.FC<ProductListComponentProps> = ({
                 <div className={styles.searchContainer}>
                     <SearchBar />
                 </div>
-                <div className={styles.nameContainer}>
-                    <NameBar />
-                </div>
-                <div className={styles.triageContainer}>
-                    <TriageBar options={options} />
+                <div className={styles.rightContainer}>
+                    <div className={styles.nameContainer}>
+                        <NameBar />
+                    </div>
+                    <div className={styles.triageContainer}>
+                        <TriageBar options={options} />
+                    </div>
                 </div>
             </div>
             <ul className={styles.cardContainer}>
