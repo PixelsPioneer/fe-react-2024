@@ -198,43 +198,39 @@
 @media only screen and (min-width: 990px) and (max-width: 1249px) {
 
   .barContainer {
-    padding: 20px;
+    margin-right: -20px;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    gap: 20px;
-  }
-
-  .rightContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 20px;
-    width: auto;
   }
 
   .searchContainer {
+    margin-right: -50px;
     justify-content: flex-start;
-  }
-
-  .rightContainer {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 20px;
     width: auto;
+    flex-grow: 1;
   }
 
   .nameContainer,
   .triageContainer {
     justify-content: flex-end;
+    width: auto;
+    flex-grow: 1;
+    white-space: nowrap;
   }
 
   .triageContainer {
-    white-space: nowrap;
+    margin-right: 5px;
+  }
+
+  .rightContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
   }
 }
+
 
 @media only screen and (min-width: 1250px) {
 
