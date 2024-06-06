@@ -16,7 +16,6 @@
   width: auto;
 }
 
-
 .searchContainer,
 .nameContainer,
 .triageContainer {
@@ -29,7 +28,6 @@
 .triageContainer {
   margin-right: 55px;
 }
-
 
 .mainCard {
   display: flex;
@@ -231,7 +229,6 @@
   }
 }
 
-
 @media only screen and (min-width: 1250px) {
 
   .barContainer {
@@ -267,5 +264,44 @@
   .triageContainer {
     white-space: nowrap;
     margin-right: 50px;
+  }
+}
+
+@media only screen and (min-width: 2000px) {
+
+  .barContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .searchContainer {
+    justify-content: flex-start;
+    flex-grow: 1;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .nameContainer,
+  .triageContainer {
+    justify-content: center;
+    flex-grow: 0;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .rightContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    justify-content: center;
+    flex-grow: 0;
+    margin-left: auto;
+    margin-right: 30px;
   }
 }
