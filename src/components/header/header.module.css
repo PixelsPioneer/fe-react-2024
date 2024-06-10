@@ -234,13 +234,17 @@
 
 @media only screen and (min-width: 1250px) {
 
-  .header {
+  .header_wrapper {
     width: 100vw;
-    max-width: 1250px;
+    background-color: #111;
+  }
+
+  .header {
+    width: 1250px; /* Автоматична ширина */
     background-color: #111;
     padding: 0 15px;
     box-sizing: border-box;
-    margin: 0 auto;
+    margin: 0 auto; /* Центруємо блок по горизонталі */
   }
 
   .logoMA {
