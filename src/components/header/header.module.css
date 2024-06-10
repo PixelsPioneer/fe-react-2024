@@ -131,6 +131,7 @@
   }
 
   .Card {
+    margin-left: -15px;
     position: relative;
     background: #111;
   }
@@ -193,6 +194,7 @@
   }
 
   .logOutButton {
+    margin-left: -10px;
     display: flex;
     background: #333;
     height: 34px;
