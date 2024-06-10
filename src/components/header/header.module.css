@@ -1,5 +1,10 @@
+.header_wrapper {
+  max-width: none;
+  background-color: #111;
+}
+
 .header {
-  width: 94.8vw;
+  width: 100vw;
   max-width: none;
   display: flex;
   justify-content: space-between;
@@ -90,6 +95,11 @@
 }
 
 @media only screen and (min-width: 648px) and (max-width: 1249px) {
+
+  .header_wrapper {
+    width: 100vw;
+    background-color: #111;
+  }
 
   .header {
     padding: 0 10px;
@@ -235,16 +245,17 @@
 @media only screen and (min-width: 1250px) {
 
   .header_wrapper {
-    width: 100vw;
+    width: calc(100vw + 35px);
+    max-width: none;
     background-color: #111;
   }
 
   .header {
-    width: 1250px; /* Автоматична ширина */
+    width: 1250px;
     background-color: #111;
     padding: 0 15px;
     box-sizing: border-box;
-    margin: 0 auto; /* Центруємо блок по горизонталі */
+    margin: 0 auto;
   }
 
   .logoMA {
