@@ -342,6 +342,7 @@
   }
 
   .logOutButton {
+    margin-left: -10px;
     display: flex;
     background: #333;
     height: 34px;
