@@ -1,0 +1,84 @@
+.triageBarContainer {
+  display: flex;
+  align-items: center;
+}
+
+.triageBarContainer p {
+  color: var(--text-color);
+  font-size: 14px;
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+.triageBar {
+  border: 1px solid var(--name-button-border-color);
+  position: relative;
+  display: inline-block;
+  background-color: var(--triage-default-background-color);
+  border-radius: 50px;
+  cursor: pointer;
+  width: 190px;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+.arrow {
+  margin-left: 8px;
+  stroke: var(--arrow-diabel-color);
+  transition: transform;
+}
+
+.arrow.open {
+  stroke: var(--arrow-anabel-color);
+  transform: rotate(180deg);
+}
+
+.selectedOption {
+  color: var(--text-color);
+  background-color: var(--triage-default-background-color);
+  border-radius: 50px;
+  width: 190px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 10px;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 2;
+  top: 0;
+}
+
+.selectedOption.active {
+  background-color: var(--button-select-color);
+  color: var(--text-color);
+  border-right: 1px solid var(--name-button-border-color);
+}
+
+.options {
+  position: absolute;
+  top: 10px;
+  width: calc(100% + 2px);
+  left: -1px;
+  background-color: var(--triage-option-background-color);
+  border: 1px solid var(--name-button-border-color);
+  border-top: none;
+  list-style: none;
+  padding: 10px 0;
+  margin-top: 0;
+  border-radius: 0 0 20px 20px;
+  z-index: 0;
+  box-sizing: border-box;
+  transform: translateY(12%);
+}
+
+.options li {
+  border-radius: 20px;
+  padding: 8px 16px;
+  color: var(--text-color);
+  font-size: 14px;
+  cursor: pointer;
+  text-align: center;
+  box-sizing: border-box;
+}
+

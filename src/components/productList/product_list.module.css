@@ -1,7 +1,41 @@
+.barContainer {
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.rightContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: auto;
+}
+
+.searchContainer,
+.nameContainer,
+.triageContainer {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 20px;
+}
+
+.triageContainer {
+  margin-right: 55px;
+}
+
 .mainCard {
   display: flex;
-  justify-content: center;
-  padding: 52px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  padding-top: 20px;
 }
 
 .cardContainer {
@@ -19,7 +53,7 @@
   max-width: 275px;
   width: 100%;
   flex-direction: column;
-  border: 1px solid #CCC;
+  border: 1px solid var(--card-color);
   border-radius: 20px;
   padding: 20px 15px;
   gap: 20px;
@@ -34,7 +68,7 @@
 }
 
 .productTitle {
-  color: #111;
+  color: var(--text-color);
   display: flex;
   margin: 0;
   max-width: 245px;
@@ -48,8 +82,8 @@
   position: absolute;
   top: -10px;
   right: -10px;
-  background-color: #EF4934;
-  color: #111;
+  background-color: var(--button-select-color);
+  color: var(--item-cart-color);
   border-radius: 50%;
   width: 20px;
   height: 20px;
@@ -60,7 +94,7 @@
 }
 
 .priceContainer {
-  color: #111;
+  color: var(--text-color);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -86,3 +120,151 @@
   display: flex;
   margin: 0;
 }
+
+@media only screen and (min-width: 658px) and (max-width: 989px) {
+
+  .barContainer {
+    padding: 20px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .searchContainer,
+  .nameContainer,
+  .triageContainer {
+    margin: 0;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .mainCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    padding-top: 20px;
+  }
+
+  .cardContainer {
+    display: flex;
+    max-width: 1175px;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 35px;
+    padding: 0;
+  }
+
+  .card {
+    display: flex;
+    max-width: 275px;
+    width: 100%;
+    flex-direction: column;
+    border: 1px solid var(--card-color);
+    border-radius: 20px;
+    padding: 20px 15px;
+    gap: 20px;
+  }
+
+  .productTitle {
+    color: var(--text-color);
+    display: flex;
+    margin: 0;
+    max-width: 245px;
+    word-break: break-word;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 25px;
+  }
+
+  .priceContainer {
+    color: var(--text-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .productPrice {
+    display: flex;
+    margin: 0;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 30px;
+  }
+}
+
+@media only screen and (min-width: 990px) and (max-width: 1249px) {
+
+  .barContainer {
+    margin-right: -20px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .searchContainer {
+    margin-right: -50px;
+    justify-content: flex-start;
+    width: auto;
+    flex-grow: 1;
+  }
+
+  .nameContainer,
+  .triageContainer {
+    justify-content: flex-end;
+    width: auto;
+    flex-grow: 1;
+    white-space: nowrap;
+  }
+
+  .triageContainer {
+    margin-right: 5px;
+  }
+
+  .rightContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+  }
+}
+
+@media only screen and (min-width: 1250px) {
+
+  .barContainer {
+    width: 1250px;
+    padding: 20px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .searchContainer {
+    justify-content: flex-start;
+    margin-left: 20px;
+  }
+
+  .rightContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+    width: auto;
+  }
+
+  .nameContainer {
+    margin-right: 20px;
+  }
+
+  .triageContainer {
+    justify-content: flex-end;
+  }
+
+  .triageContainer {
+    white-space: nowrap;
+    margin-right: 50px;
+  }
+}
+

@@ -1,5 +1,6 @@
 import aboutImage from '@/assets/image.png';
 
+import '../../App.css';
 import styles from './about_me.module.css';
 
 export const AboutMeComponents = () => (

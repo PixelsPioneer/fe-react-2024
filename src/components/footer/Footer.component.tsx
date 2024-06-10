@@ -6,6 +6,7 @@ import instagram from '../../assets/insta.svg';
 
 import FooterIcon from './FooterIcon.tsx';
 
+import '../../App.css';
 import styles from './footer.module.css';
 
 function Footer() {
