@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import '../../App.css';
 import styles from './nameBar.module.css';
@@ -11,11 +11,14 @@ const buttons: { name: ButtonName; label: string }[] = [
     { name: 'Clothes', label: 'Clothes' },
 ];
 
-const NameBarComponent: React.FC = () => {
-    const [activeButton, setActiveButton] = useState<ButtonName | ''>('');
+interface NameBarProps {
+    selectedCategory: ButtonName | '';
+    setSelectedCategory: (category: ButtonName | '') => void;
+}
 
+const NameBarComponent: React.FC<NameBarProps> = ({ selectedCategory, setSelectedCategory }) => {
     const handleButtonClick = (name: ButtonName) => {
-        setActiveButton((previousActiveButton) => (previousActiveButton === name ? '' : name));
+        setSelectedCategory(name === selectedCategory ? '' : name);
     };
 
     return (
@@ -23,7 +26,7 @@ const NameBarComponent: React.FC = () => {
             {buttons.map((button) => (
                 <button
                     key={button.name}
-                    className={`${styles.nameButton} ${activeButton === button.name ? styles.active : ''}`}
+                    className={`${styles.nameButton} ${selectedCategory === button.name ? styles.active : ''}`}
                     onClick={() => handleButtonClick(button.name)}
                 >
                     {button.label}
