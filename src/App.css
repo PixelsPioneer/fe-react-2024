@@ -40,6 +40,11 @@ body {
   --triage-option-background-color: var(--grey3);
   --arrow-diabel-color: var(--light);
   --arrow-anabel-color: var(--light);
+  --pagination-background-color: var(--dark);
+  --pagination-dote-color: var(--light);
+  --pagination-text-color: var(--light);
+  --pagination-disabled-background-color: var(--grey3);
+  --pagination-disabled-text-color: var(--grey2);
 }
 
 .light {
@@ -58,5 +63,10 @@ body {
   --triage-option-background-color: var(--light);
   --arrow-diabel-color: var(--dark);
   --arrow-anabel-color: var(--light);
+  --pagination-background-color: var(--light);
+  --pagination-dote-color: var(--dark);
+  --pagination-text-color: var(--dark);
+  --pagination-disabled-background-color: var(--grey2);
+  --pagination-disabled-text-color: var(--grey1);
 }
 
