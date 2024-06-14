@@ -5,9 +5,10 @@ import styles from './triageBar.module.css';
 
 interface TriageBarProps {
     options: string[];
+    setSortOption: (option: string) => void;
 }
 
-const TriageBarComponent: React.FC<TriageBarProps> = ({ options }) => {
+const TriageBarComponent: React.FC<TriageBarProps> = ({ options, setSortOption }) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const [selectedOption, setSelectedOption] = useState<string>(options[0]);
 
@@ -17,6 +18,7 @@ const TriageBarComponent: React.FC<TriageBarProps> = ({ options }) => {
 
     const handleSelectOption = (option: string) => {
         setSelectedOption(option);
+        setSortOption(option); // Call the passed function to set the sort option
         setIsOpen(false);
     };
 

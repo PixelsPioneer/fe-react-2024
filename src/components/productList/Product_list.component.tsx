@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 
-import NameBar from '@/components/productList/NameBar.component.tsx';
-import SearchBar from '@/components/productList/SearchBar.component.tsx';
-import TriageBar from '@/components/productList/TriageBar.component.tsx';
+import Pagination from '@/components/pagination/Pagination.component';
+import NameBarComponent from '@/components/productList/NameBar.component';
+import SearchBarComponent from '@/components/productList/SearchBar.component';
+import TriageBarComponent from '@/components/productList/TriageBar.component';
 import type { ProductsInterface } from '@/interfaces/interface_product';
 
 import addToCardImage from '../../assets/add_to_card.svg';
@@ -24,7 +25,9 @@ interface ProductListComponentProps {
     isDarkTheme: boolean;
 }
 
-export const ProductListComponent: React.FC<ProductListComponentProps> = ({
+type ButtonName = 'Electronics' | 'Shoes' | 'Clothes' | '';
+
+const ProductListComponent: React.FC<ProductListComponentProps> = ({
     products,
     selectedProducts,
     toggleProductSelection,
@@ -36,45 +39,81 @@ export const ProductListComponent: React.FC<ProductListComponentProps> = ({
     setSortOption,
     isDarkTheme,
 }) => {
+    const [currentPage, setCurrentPage] = useState(1);
+    const [selectedCategory, setSelectedCategory] = useState<ButtonName>('');
+    const [isSearchActive, setIsSearchActive] = useState(false);
+    const productsPerPage = 8;
     const options = ['Price (Low - High)', 'Price (High - Low)', 'Newest', 'Oldest'];
 
-    const sortedProducts = products.sort((a, b) => {
-        switch (sortOption) {
-            case 'Price (High - Low)': {
-                return b.price - a.price;
-            }
-            case 'Price (Low - High)': {
-                return a.price - b.price;
-            }
-            case 'Newest': {
-                return new Date(b.creationAt).getTime() - new Date(a.creationAt).getTime();
-            }
-            case 'Oldest': {
-                return new Date(a.creationAt).getTime() - new Date(b.creationAt).getTime();
-            }
-            default: {
-                return 0;
-            }
-        }
-    });
+    useEffect(() => {
+        setCurrentPage(1);
+    }, [selectedCategory, sortOption, searchQuery]);
+
+    const filteredProducts = useMemo(
+        () =>
+            products.filter((product) => {
+                const isCategoryMatched = selectedCategory === '' || product.category.name === selectedCategory;
+                const isSearchQueryMatched =
+                    !isSearchActive || searchQuery === '' || product.title.toLowerCase().includes(searchQuery.toLowerCase());
+                return isCategoryMatched && isSearchQueryMatched;
+            }),
+        [products, selectedCategory, searchQuery, isSearchActive],
+    );
+
+    const sortedProducts = useMemo(
+        () =>
+            [...filteredProducts].sort((a, b) => {
+                switch (sortOption) {
+                    case 'Price (High - Low)': {
+                        return b.price - a.price;
+                    }
+                    case 'Price (Low - High)': {
+                        return a.price - b.price;
+                    }
+                    case 'Newest': {
+                        return new Date(b.creationAt).getTime() - new Date(a.creationAt).getTime();
+                    }
+                    case 'Oldest': {
+                        return new Date(a.creationAt).getTime() - new Date(b.creationAt).getTime();
+                    }
+                    default: {
+                        return 0;
+                    }
+                }
+            }),
+        [filteredProducts, sortOption],
+    );
+
+    const indexOfLastProduct = currentPage * productsPerPage;
+    const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+    const currentProducts = sortedProducts.slice(indexOfFirstProduct, indexOfLastProduct);
+
+    const handlePageChange = (pageNumber: number) => {
+        setCurrentPage(pageNumber);
+    };
+
+    const handleSearch = (query: string) => {
+        setSearchQuery(query);
+        setIsSearchActive(true);
+    };
 
     return (
         <div className={styles.mainCard}>
             <div className={styles.barContainer}>
                 <div className={styles.searchContainer}>
-                    <SearchBar />
+                    <SearchBarComponent onSearch={handleSearch} />
                 </div>
                 <div className={styles.rightContainer}>
                     <div className={styles.nameContainer}>
-                        <NameBar />
+                        <NameBarComponent selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
                     </div>
                     <div className={styles.triageContainer}>
-                        <TriageBar options={options} />
+                        <TriageBarComponent options={options} setSortOption={setSortOption} />
                     </div>
                 </div>
             </div>
             <ul className={styles.cardContainer}>
-                {sortedProducts.map((product) => (
+                {currentProducts.map((product) => (
                     <li className={styles.card} key={product.id}>
                         <img className={styles.productImages} src={product.images[0]} alt="product" />
                         <p className={styles.productTitle}>{product.title}</p>
@@ -92,6 +131,11 @@ export const ProductListComponent: React.FC<ProductListComponentProps> = ({
                     </li>
                 ))}
             </ul>
+            <Pagination
+                currentPage={currentPage}
+                totalPages={Math.ceil(sortedProducts.length / productsPerPage)}
+                onPageChange={handlePageChange}
+            />
         </div>
     );
 };
