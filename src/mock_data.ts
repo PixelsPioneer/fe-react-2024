@@ -1,6 +1,4 @@
-import type { ProductsInterface } from '@/interfaces/interface_product.ts';
-
-export const mockData: ProductsInterface[] = [
+export const mockData = [
     {
         id: 1,
         title: 'Majestic Mountain Graphic T-Shirt',
