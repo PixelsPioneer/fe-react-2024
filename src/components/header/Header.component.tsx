@@ -20,13 +20,10 @@ interface HeaderComponentProps {
     selectedProducts: number[];
     setTheme: (theme: 'light' | 'dark') => void;
     isDarkTheme: boolean;
+    toggleComponent?: (componentName: string) => void; // Виправлення тут
 }
 
-interface HeaderComponentProps {
-    toggleComponent?: unknown;
-}
-
-export const HeaderComponent: React.FC<HeaderComponentProps> = ({ products, selectedProducts, setTheme, isDarkTheme, toggleComponent }) => {
+const HeaderComponent: React.FC<HeaderComponentProps> = ({ products, selectedProducts, setTheme, isDarkTheme, toggleComponent }) => {
     const [totalItemsInCart, setTotalItemsInCart] = useState(0);
 
     useEffect(() => {
@@ -43,7 +40,13 @@ export const HeaderComponent: React.FC<HeaderComponentProps> = ({ products, sele
         if (storedTheme) {
             setTheme(storedTheme);
         }
-    }, []);
+    }, [setTheme]);
+
+    const handleBurgerMenuClick = () => {
+        if (toggleComponent) {
+            toggleComponent('burgerMenu');
+        }
+    };
 
     return (
         <div className={styles.header_wrapper}>
@@ -68,7 +71,7 @@ export const HeaderComponent: React.FC<HeaderComponentProps> = ({ products, sele
                 </div>
                 <div className={styles.menuAndAuthContainer}>
                     <div className={styles.buttonContainer}>
-                        <button className={styles.burgerMenuButton}>
+                        <button className={styles.burgerMenuButton} onClick={handleBurgerMenuClick}>
                             <img className={styles.burgerMenu} src={BurgerMenu} alt="Burger Menu" />
                         </button>
                     </div>
