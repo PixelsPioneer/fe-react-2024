@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import BurgerMenu from '../../assets/burger-menu.png';
 import Card from '../../assets/card.svg';
@@ -15,19 +16,37 @@ interface Product {
 }
 
 interface HeaderComponentProps {
-    toggleComponent: (componentName: string) => void;
     products: Product[];
     selectedProducts: number[];
     setTheme: (theme: 'light' | 'dark') => void;
     isDarkTheme: boolean;
+    toggleComponent?: (componentName: string) => void;
 }
 
-export const HeaderComponent: React.FC<HeaderComponentProps> = ({ toggleComponent, products, selectedProducts, setTheme, isDarkTheme }) => {
+const HeaderComponent: React.FC<HeaderComponentProps> = ({ products, selectedProducts, setTheme, isDarkTheme, toggleComponent }) => {
     const [totalItemsInCart, setTotalItemsInCart] = useState(0);
 
     useEffect(() => {
         setTotalItemsInCart(selectedProducts.length);
     }, [selectedProducts]);
+
+    const handleThemeChange = (theme: 'light' | 'dark') => {
+        setTheme(theme);
+        localStorage.setItem('theme', theme);
+    };
+
+    useEffect(() => {
+        const storedTheme = localStorage.getItem('theme') as 'light' | 'dark';
+        if (storedTheme) {
+            setTheme(storedTheme);
+        }
+    }, [setTheme]);
+
+    const handleBurgerMenuClick = () => {
+        if (toggleComponent) {
+            toggleComponent('burgerMenu');
+        }
+    };
 
     return (
         <div className={styles.header_wrapper}>
@@ -37,14 +56,14 @@ export const HeaderComponent: React.FC<HeaderComponentProps> = ({ toggleComponen
                     <div className={styles.themesMenuContainer}>
                         <button
                             className={`${styles.lightThemeButton} ${isDarkTheme ? '' : styles.active}`}
-                            onClick={() => setTheme('light')}
+                            onClick={() => handleThemeChange('light')}
                         >
                             <img className={styles.lightThemeIcon} src={LightTheme} alt="Light Theme" />
                         </button>
                         <hr className={styles.customHr} />
                         <button
                             className={`${styles.darkThemesButton} ${isDarkTheme ? styles.active : ''}`}
-                            onClick={() => setTheme('dark')}
+                            onClick={() => handleThemeChange('dark')}
                         >
                             <img className={styles.darkThemeIcon} src={DarkTheme} alt="Dark Theme" />
                         </button>
@@ -52,18 +71,17 @@ export const HeaderComponent: React.FC<HeaderComponentProps> = ({ toggleComponen
                 </div>
                 <div className={styles.menuAndAuthContainer}>
                     <div className={styles.buttonContainer}>
-                        <button className={styles.burgerMenuButton}>
+                        <button className={styles.burgerMenuButton} onClick={handleBurgerMenuClick}>
                             <img className={styles.burgerMenu} src={BurgerMenu} alt="Burger Menu" />
                         </button>
                     </div>
                     <div className={styles.aboutProdct}>
-                        <button className={styles.aboutMe} onClick={() => toggleComponent('About')}>
+                        <Link className={styles.aboutMe} to="/">
                             About
-                        </button>
-
-                        <button className={styles.products} onClick={() => toggleComponent('Products')}>
+                        </Link>
+                        <Link className={styles.products} to="/products">
                             Products
-                        </button>
+                        </Link>
                     </div>
                     <div className={styles.buttonContainer}>
                         <button className={styles.Card}>

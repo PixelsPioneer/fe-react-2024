@@ -1,0 +1,37 @@
+.pages_not_found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 65vh;
+  text-align: center;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  padding: 20px;
+}
+
+.page-not-found h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.page-not-found p {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.page-not-found a {
+  font-size: 1rem;
+  color: var(--main-red);
+  text-decoration: none;
+  border: 1px solid var(--main-red);
+  padding: .5rem 1rem;
+  border-radius: 4px;
+  transition: background-color .3s, color .3s;
+}
+
+.page-not-found a:hover {
+  background-color: var(--main-red);
+  color: var(--main-red);
+}
