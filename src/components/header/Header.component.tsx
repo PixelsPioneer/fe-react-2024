@@ -20,7 +20,7 @@ interface HeaderComponentProps {
     selectedProducts: number[];
     setTheme: (theme: 'light' | 'dark') => void;
     isDarkTheme: boolean;
-    toggleComponent?: (componentName: string) => void; // Виправлення тут
+    toggleComponent?: (componentName: string) => void;
 }
 
 const HeaderComponent: React.FC<HeaderComponentProps> = ({ products, selectedProducts, setTheme, isDarkTheme, toggleComponent }) => {
