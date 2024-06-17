@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-import { AboutMeComponents } from '@/components/about/About_me.component.tsx';
-import Footer from '@/components/footer/Footer.component.tsx';
-import ProductListComponent from '@/components/productList/Product_list.component.tsx';
-import { mockData } from '@/mock_data.ts';
-
-import HeaderComponent from './components/header/Header.component.tsx';
+import AboutPage from './components/LayoutComponent/AboutPage.tsx';
+import LayoutComponent from './components/LayoutComponent/LayoutComponent.tsx';
+import PageNotFound from './components/LayoutComponent/PageNotFound.tsx';
+import ProductsPage from './components/LayoutComponent/ProductPage.tsx';
+import { mockData } from './mock_data';
 
 import './App.css';
 
 function App() {
-    const [currentComponent, setCurrentComponent] = useState('About');
     const [selectedProducts, setSelectedProducts] = useState<number[]>([]);
     const [searchQuery, setSearchQuery] = useState('');
     const [filteredName, setFilteredName] = useState('');
@@ -20,12 +19,10 @@ function App() {
 
     const [isDarkTheme, setIsDarkTheme] = useState<boolean>(() => {
         const storedTheme = localStorage.getItem('theme');
-        return storedTheme === null ? getPreferredTheme() : JSON.parse(storedTheme);
+        return storedTheme === null ? getPreferredTheme() : storedTheme === 'dark';
     });
 
     const products = mockData;
-
-    const toggleComponent = (componentName: string) => setCurrentComponent(componentName);
 
     const toggleProductSelection = (productId: number) => {
         setSelectedProducts((previousSelectedProducts) => {
@@ -41,7 +38,16 @@ function App() {
     const setTheme = (theme: string) => {
         const isDark = theme === 'dark';
         setIsDarkTheme(isDark);
-        localStorage.setItem('theme', JSON.stringify(isDark));
+        localStorage.setItem('theme', theme);
+
+        const bodyElement = document.body;
+        if (isDark) {
+            bodyElement.classList.add('dark');
+            bodyElement.classList.remove('light');
+        } else {
+            bodyElement.classList.add('light');
+            bodyElement.classList.remove('dark');
+        }
     };
 
     useEffect(() => {
@@ -52,43 +58,58 @@ function App() {
     }, []);
 
     useEffect(() => {
-        const rootElement = document.documentElement;
+        const bodyElement = document.body;
         if (isDarkTheme) {
-            rootElement.classList.add('dark');
-            rootElement.classList.remove('light');
+            bodyElement.classList.add('dark');
+            bodyElement.classList.remove('light');
         } else {
-            rootElement.classList.add('light');
-            rootElement.classList.remove('dark');
+            bodyElement.classList.add('light');
+            bodyElement.classList.remove('dark');
         }
+
+        return () => {
+            bodyElement.classList.remove('light', 'dark');
+        };
     }, [isDarkTheme]);
 
     return (
-        <div className="App">
-            <HeaderComponent
-                toggleComponent={toggleComponent}
-                products={products}
-                selectedProducts={selectedProducts}
-                setTheme={setTheme}
-                isDarkTheme={isDarkTheme}
-            />
-            {currentComponent === 'About' ? (
-                <AboutMeComponents />
-            ) : (
-                <ProductListComponent
-                    products={products}
-                    selectedProducts={selectedProducts}
-                    toggleProductSelection={toggleProductSelection}
-                    searchQuery={searchQuery}
-                    filteredName={filteredName}
-                    sortOption={sortOption}
-                    setSearchQuery={setSearchQuery}
-                    setFilteredName={setFilteredName}
-                    setSortOption={setSortOption}
-                    isDarkTheme={isDarkTheme}
-                />
-            )}
-            <Footer />
-        </div>
+        <Router>
+            <div className="App">
+                <Routes>
+                    <Route
+                        path="/"
+                        element={
+                            <LayoutComponent
+                                products={products}
+                                selectedProducts={selectedProducts}
+                                setTheme={setTheme}
+                                isDarkTheme={isDarkTheme}
+                                toggleComponent={() => {}}
+                            />
+                        }
+                    >
+                        <Route index element={<AboutPage />} />
+                        <Route
+                            path="products"
+                            element={
+                                <ProductsPage
+                                    selectedProducts={selectedProducts}
+                                    toggleProductSelection={toggleProductSelection}
+                                    searchQuery={searchQuery}
+                                    filteredName={filteredName}
+                                    sortOption={sortOption}
+                                    setSearchQuery={setSearchQuery}
+                                    setFilteredName={setFilteredName}
+                                    setSortOption={setSortOption}
+                                    isDarkTheme={isDarkTheme}
+                                />
+                            }
+                        />
+                        <Route path="*" element={<PageNotFound />} />
+                    </Route>
+                </Routes>
+            </div>
+        </Router>
     );
 }
 

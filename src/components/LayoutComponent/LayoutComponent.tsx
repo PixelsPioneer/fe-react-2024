@@ -1,27 +1,27 @@
 import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
-const LayoutComponent: React.FC = () => (
-    <div>
-        <header>
-            <h1>My Website</h1>
-            <nav>
-                <ul>
-                    <li>
-                        <Link to="/">About</Link>
-                    </li>
-                    <li>
-                        <Link to="/products">Products</Link>
-                    </li>
-                </ul>
-            </nav>
-        </header>
-        <main>
+import FooterComponent from '@/components/footer/Footer.component.tsx';
+import HeaderComponent from '@/components/header/Header.component.tsx';
+import type { HeaderComponentProps } from '@/components/header/HeaderComponentProps.tsx';
+
+interface LayoutComponentProps extends Omit<HeaderComponentProps, 'toggleComponent'> {
+    toggleComponent: (componentName: string) => void;
+}
+
+const LayoutComponent: React.FC<LayoutComponentProps> = ({ products, selectedProducts, setTheme, isDarkTheme, toggleComponent }) => (
+    <div className="LayoutComponent">
+        <HeaderComponent
+            products={products}
+            selectedProducts={selectedProducts}
+            setTheme={setTheme}
+            isDarkTheme={isDarkTheme}
+            toggleComponent={toggleComponent}
+        />
+        <main className="main">
             <Outlet />
         </main>
-        <footer>
-            <p>Footer Content</p>
-        </footer>
+        <FooterComponent />
     </div>
 );
 
